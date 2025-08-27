@@ -1,3 +1,4 @@
+import 'package:app_loja_digital/screens/base/base_screens.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -7,8 +8,7 @@ void main() async {
   await Firebase.initializeApp(); 
 
   runApp(const MyApp());
-
-  FirebaseFirestore.instance.collection('teste').add({'testee': 'TESTE'});
+  
 }
 
 class MyApp extends StatelessWidget {
@@ -18,12 +18,12 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Loja da JU',
       theme: ThemeData(
         primarySwatch: Colors.blue,
-        visualDensity: VisualDensity.adaptivePlatformDensity
+        visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: Container(),
+      home: BaseScreen(),
     );
   }
 }
