@@ -1,14 +1,24 @@
 import 'package:app_loja_digital/screens/base/base_screens.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:app_loja_digital/models/page_manager.dart';
 
 void main() async {
-  WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp(); 
-
-  runApp(const MyApp());
-  
+ runApp(
+    MultiProvider(
+      providers: [
+          ListenableProvider<PageController>(
+            create: (_) => PageController(
+            )),
+        ChangeNotifierProxyProvider<PageController, PageManager>(
+          create: (context) => PageManager(context.read<PageController>()),
+          update: (context, pageController, previous) =>
+           previous ?? PageManager(pageController),
+        ),
+      ],
+      child: const MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -23,7 +33,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: BaseScreen(),
-    );
+      home: BaseScreen()
+      );
   }
 }

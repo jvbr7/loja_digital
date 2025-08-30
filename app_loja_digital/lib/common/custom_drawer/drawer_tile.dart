@@ -1,29 +1,53 @@
 import 'package:flutter/material.dart';
-
+import 'package:provider/provider.dart';
+import 'package:app_loja_digital/models/page_manager.dart';
 
 class DrawerTile extends StatelessWidget {
-  DrawerTile({required this.iconData, required this.title});
+  const DrawerTile({
+    super.key,
+    required this.iconData,
+    required this.title,
+    required this.page,
+  });
 
   final IconData iconData;
   final String title;
+  final int page;
 
   @override
+  
+  @override
   Widget build(BuildContext context) {
-    return Row(
+      final int currentPage = context.watch<PageManager>().currentPage;
+
+    return InkWell(
+      onTap: (){
+        context.read<PageManager>().setPage(page);
+
+         Navigator.of(context).pop(); // fecha o Drawer
+      },
+    child: SizedBox(
+      height: 60,
+      child: Row(
       children: <Widget>[
-        Icon(
+      Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 32),
+        child: Icon(
           iconData,
           size: 32,
-          color: Colors.grey[700],
+          color: currentPage == page ? Colors.red : Colors.grey[700],
         ),
+    ),
         Text(
           title,
           style: TextStyle(
             fontSize: 16,
-            color: Colors.grey[700],
-            ),
-        )
-      ],
+          color: currentPage == page ? Colors.red : Colors.grey[700],
+                ),
+              )
+          ],
+        ),
+      ),
     );
   }
 }

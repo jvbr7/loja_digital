@@ -5,17 +5,20 @@ class CustomDrawer extends StatelessWidget {
   const CustomDrawer({super.key});
 
   @override
-
   Widget build(BuildContext context) {
     return Drawer(
       child: ListView(
-        children: <Widget>[
-          DrawerTile(iconData: Icons.home, title: 'Inicio',),
-          DrawerTile(iconData: Icons.list, title: 'Produtos',),
-          DrawerTile(iconData: Icons.playlist_add_check, title: 'Meus Pedidos',),
-          DrawerTile(iconData: Icons.home, title: 'Lojas',),
+        children: const <Widget>[
+          DrawerHeader(
+            child: Text('Minha Loja Digital',
+                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
+          ),
+          DrawerTile(iconData: Icons.home, title: 'Início', page: 0),
+          DrawerTile(iconData: Icons.list, title: 'Produtos', page: 1),
+          DrawerTile(iconData: Icons.shopping_cart, title: 'Carrinho', page: 2),
+          DrawerTile(iconData: Icons.person, title: 'Perfil', page: 3),
         ],
-      )
+      ),
     );
   }
 }
