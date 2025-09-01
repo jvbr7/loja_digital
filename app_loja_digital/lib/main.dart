@@ -1,3 +1,4 @@
+import 'package:app_loja_digital/models/user_manager.dart';
 import 'package:app_loja_digital/screens/base/base_screens.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -28,9 +29,16 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      create: (_) => UserManager(),
+      debugShowCheckedModeBanner: false,
       title: 'Loja da JU',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        primaryColor :  Color.fromARGB(255, 4, 125, 141),
+        scaffoldBackgroundColor: const Color.fromARGB(255, 4, 125, 141),
+        appBarTheme: const AppBarTheme(
+          elevation: 0
+        ),
+
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
       home: BaseScreen()

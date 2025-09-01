@@ -15,8 +15,8 @@ class CustomDrawer extends StatelessWidget {
           ),
           DrawerTile(iconData: Icons.home, title: 'Início', page: 0),
           DrawerTile(iconData: Icons.list, title: 'Produtos', page: 1),
-          DrawerTile(iconData: Icons.shopping_cart, title: 'Carrinho', page: 2),
-          DrawerTile(iconData: Icons.person, title: 'Perfil', page: 3),
+          DrawerTile(iconData: Icons.shopping_cart, title: 'Meus Pedidos', page: 2),
+          DrawerTile(iconData: Icons.person, title: 'Lojas', page: 3),
         ],
       ),
     );
