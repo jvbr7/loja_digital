@@ -1,4 +1,4 @@
-import 'package:app_loja_digital/screens/base/login/login.screen.dart';
+import 'package:app_loja_digital/screens/base/login/login_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:app_loja_digital/common/custom_drawer/custom_drawer.dart';
@@ -13,35 +13,50 @@ class BaseScreen extends StatelessWidget {
     return PageView(
       controller: pageController,
       physics: const NeverScrollableScrollPhysics(),
-      children : <Widget>[
-        // Página 0 - Login
-        LoginScreen(),
-
-        // Página 1 - Produtos
+      children: <Widget>[
+        // Página 0 - Home (exemplo)
         Scaffold(
           drawer: CustomDrawer(),
           appBar: AppBar(
-            title: Text('Produtos'),
+            title: const Text('Início'),
           ),
-          body: Center(child: Text('Tela Produtos')),
+          body: Center(child: Text('Tela Inicial')),
         ),
 
-        // Página 3 - Configurações
+        // Página 1 - Login (se quiser mostrar a tela de login como página)
         Scaffold(
           drawer: CustomDrawer(),
           appBar: AppBar(
-            title: Text('Pedidos'),
+            title: const Text('Login'),
           ),
-          body: Center(child: Text('Meus pedidos')),
+          body: LoginScreen(),
+        ),
+
+        // Página 2 - Produtos
+        Scaffold(
+          drawer: CustomDrawer(),
+          appBar: AppBar(
+            title: const Text('Produtos'),
+          ),
+          body: const Center(child: Text('Tela Produtos')),
+        ),
+
+        // Página 3 - Pedidos
+        Scaffold(
+          drawer: CustomDrawer(),
+          appBar: AppBar(
+            title: const Text('Pedidos'),
+          ),
+          body: const Center(child: Text('Meus pedidos')),
         ),
 
         // Página 4 - Lojas
         Scaffold(
           drawer: CustomDrawer(),
           appBar: AppBar(
-            title: Text('Lojas'),
+            title: const Text('Lojas'),
           ),
-          body: Center(child: Text('Tela das Lojas')),
+          body: const Center(child: Text('Tela das Lojas')),
         ),
       ],
     );
